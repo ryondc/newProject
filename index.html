@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+     <meta charset="utf-8"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>||LOAD MORE ON SCROLL USING AJAX||</title>
+
+  <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="bigcontainer">
+            <div class="container ">
+                <img src="http://sohanews.sohacdn.com/thumb_w/660/2018/3/2/photo1519987752563-1519987752587763219784.jpg">
+             </div>
+
+             <div class="container ">
+                <img src="http://sohanews.sohacdn.com/thumb_w/660/2018/3/2/photo1519987752563-1519987752587763219784.jpg">
+             </div>
+
+             <div class="container ">
+                <img src="http://sohanews.sohacdn.com/thumb_w/660/2018/3/2/photo1519987752563-1519987752587763219784.jpg">
+             </div>
+        </div>
+    </body>
+
+
+
+<script>
+   var imgList = document.getElementsByClassName("container");
+
+        window.addEventListener('scroll',() =>{
+            // console.log("Y ="+ top);
+                  
+                var ourRequest = new XMLHttpRequest();
+                ourRequest.open('GET','https://dog.ceo/api/breeds/image/random');
+                ourRequest.onload = function(){
+                 var ourData = JSON.parse(ourRequest.responseText);
+
+                   
+                    var newContainer = document.querySelector(".bigcontainer");
+                    var content = newContainer.clientHeight; //get page content height
+        
+                    var Yoffset = window.pageYOffset;//get the verticall scroll position
+                    var y = Yoffset + window.innerHeight;//bottom
+                    
+
+                    if(y >= content){
+                        var newDiv = document.createElement("div");
+                        var y = document.createElement("img"); 
+                        y.setAttribute("src",ourData.message);//set Attribute         
+                        newDiv.appendChild(y); 
+                        newDiv.classList.add("fade");
+                        newContainer.appendChild(newDiv);  
+                    }
+               }; 
+                ourRequest.send();  
+                
+        })
+
+</script>
+
+
+</html>
