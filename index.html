@@ -1,66 +1,78 @@
 <!DOCTYPE>
 <html lang="en">
-<head>
-     <meta charset="utf-8"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>||LOAD MORE ON SCROLL USING AJAX||</title>
-
-  <link rel="stylesheet" href="style.css">
+	<head>
+		<meta charset="utf-8"/>
+        <title>Upload and preview image</title>
+       
     </head>
 
-    <body>
-        <title>NEW PROJECT ON GITHUB</title>
-        <div class="bigcontainer">
-            <div class="container ">
-                <img src="http://sohanews.sohacdn.com/thumb_w/660/2018/3/2/photo1519987752563-1519987752587763219784.jpg">
-             </div>
 
-             <div class="container ">
-                <img src="http://sohanews.sohacdn.com/thumb_w/660/2018/3/2/photo1519987752563-1519987752587763219784.jpg">
-             </div>
-
-             <div class="container ">
-                <img src="http://sohanews.sohacdn.com/thumb_w/660/2018/3/2/photo1519987752563-1519987752587763219784.jpg">
-             </div>
-        </div>
-        <p>NEW CHANGE</p>
+    <body>   
+        <form  method="POST"enctype="multipart/form-data" action="/">
+            <input type="file" name="filename">
+            <input type="submit" name="upload" value="upload">    
+                 
+        </form>  
+        <form method="GET" enctype="multipart/form-data" action="/download">
+            <input type="submit" name="download" value="download">
+        </form>
+         
+        <!-- <a href="/Download">Download</a>        -->
     </body>
-
-
-
-<script>
-   var imgList = document.getElementsByClassName("container");
-
-        window.addEventListener('scroll',() =>{
-            // console.log("Y ="+ top);
-                  
-                var ourRequest = new XMLHttpRequest();
-                ourRequest.open('GET','https://dog.ceo/api/breeds/image/random');
-                ourRequest.onload = function(){
-                 var ourData = JSON.parse(ourRequest.responseText);
-
-                   
-                    var newContainer = document.querySelector(".bigcontainer");
-                    var content = newContainer.clientHeight; //get page content height
-        
-                    var Yoffset = window.pageYOffset;//get the verticall scroll position
-                    var y = Yoffset + window.innerHeight;//bottom
-                    
-
-                    if(y >= content){
-                        var newDiv = document.createElement("div");
-                        var y = document.createElement("img"); 
-                        y.setAttribute("src",ourData.message);//set Attribute         
-                        newDiv.appendChild(y); 
-                        newDiv.classList.add("fade");
-                        newContainer.appendChild(newDiv);  
-                    }
-               }; 
-                ourRequest.send();  
-                
-        })
-
-</script>
-
-
+   
+     
 </html>
+
+
+
+  
+
+
+
+Example upload file lazyload using css blur
+  <!-- <!DOCTYPE>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+        <title>Upload and preview image</title>
+       
+    </head>
+    <style>
+        #output{
+            width: 500px;
+            height: 500px;
+            padding-bottom: 56,25%;
+            border: 2px solid goldenrod;  
+        }
+
+        .blur{
+            
+            transition: all 1s;
+        }
+                    
+    </style>
+
+    <body>
+       <div >
+           <input type="file" accept="image/*" onchange="upload(event)">
+           <img class="blur" id="output">
+       </div>
+    </body>
+    <script>
+        var base64;
+        function upload(event){
+            var reader = new FileReader();
+            reader.onload = () => {
+                var output = document.getElementById('output');
+                output.src = reader.result;                
+            }
+            setTimeout(()=>{
+                reader.readAsDataURL(event.target.files[0]);          
+            },3000);
+            base64 = btoa(event.target.files[0]);  
+            
+           console.log(event);         
+           console.log(base64);   
+        }       
+    </script>
+</html> -->
