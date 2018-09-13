@@ -15,64 +15,7 @@
         </form>  
         <form method="GET" enctype="multipart/form-data" action="/download">
             <input type="submit" name="download" value="download">
-        </form>
-         
+        </form>    
         <!-- <a href="/Download">Download</a>        -->
-    </body>
-   
-     
+    </body>    
 </html>
-
-
-
-  
-
-
-
-Example upload file lazyload using css blur
-  <!-- <!DOCTYPE>
-<html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-        <title>Upload and preview image</title>
-       
-    </head>
-    <style>
-        #output{
-            width: 500px;
-            height: 500px;
-            padding-bottom: 56,25%;
-            border: 2px solid goldenrod;  
-        }
-
-        .blur{
-            
-            transition: all 1s;
-        }
-                    
-    </style>
-
-    <body>
-       <div >
-           <input type="file" accept="image/*" onchange="upload(event)">
-           <img class="blur" id="output">
-       </div>
-    </body>
-    <script>
-        var base64;
-        function upload(event){
-            var reader = new FileReader();
-            reader.onload = () => {
-                var output = document.getElementById('output');
-                output.src = reader.result;                
-            }
-            setTimeout(()=>{
-                reader.readAsDataURL(event.target.files[0]);          
-            },3000);
-            base64 = btoa(event.target.files[0]);  
-            
-           console.log(event);         
-           console.log(base64);   
-        }       
-    </script>
-</html> -->
