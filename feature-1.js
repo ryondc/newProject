@@ -1,1 +1,1 @@
-console.log("New String Feature-1");
+console.log("New Feature-1");
